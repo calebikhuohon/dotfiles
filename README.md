@@ -1,29 +1,29 @@
-# Dotfiles
+# ✨ Dotfiles 🛠️
 
-My personal dotfiles for development environment setup, focusing on Neovim, terminal multiplexing, and productivity.
+My personal dotfiles for development environment setup, focusing on Neovim, terminal multiplexing, and productivity. 🚀
 
-## Overview
+## 🔍 Overview
 
 This repository contains configuration files for:
 
-- **Neovim**: Text editor built on Vim with modern features
-- **Wezterm**: GPU-accelerated terminal emulator
-- **Zellij**: Terminal multiplexer (alternative to tmux)
-- **Starship**: Cross-shell prompt
+- **Neovim** 📝: Text editor built on Vim with modern features
+- **Wezterm** 💻: GPU-accelerated terminal emulator
+- **Zellij** 📊: Terminal multiplexer (alternative to tmux)
+- **Starship** 🚀: Cross-shell prompt
 
-## Inspiration
+## ✨ Inspiration
 
-These configurations are heavily inspired by [Lanre Adelowo's dotfiles](https://github.com/adelowo/dotfiles).
+These configurations are heavily inspired by [Lanre Adelowo's dotfiles](https://github.com/adelowo/dotfiles). 🙏
 
 
-## Neovim Configuration
+## 🔧 Neovim Configuration
 
 The Neovim setup is based on [NVChad](https://nvchad.com/) with customizations. It includes:
 
-- LSP configuration for code intelligence
-- Treesitter for better syntax highlighting
-- Various plugins for productivity enhancements
-- Custom keybindings
+- 🧠 LSP configuration for code intelligence
+- 🎨 Treesitter for better syntax highlighting
+- 🧰 Various plugins for productivity enhancements
+- ⌨️ Custom keybindings
 
 ### Plugins
 
@@ -46,23 +46,23 @@ The Neovim setup is based on [NVChad](https://nvchad.com/) with customizations. 
 - **surround.lua**: Plugin for easily managing surrounding pairs (brackets, quotes, etc.)
 - **tree-sitter.lua**: Syntax highlighting and code analysis with treesitter
 
-## Terminal Setup
+## 💻 Terminal Setup
 
-- **Wezterm**: Modern terminal emulator with GPU acceleration and Lua configuration
-- **Zellij**: Terminal multiplexer that provides window management, panes, tabs, and session management
+- **Wezterm** ⚡: Modern terminal emulator with GPU acceleration and Lua configuration
+- **Zellij** 📋: Terminal multiplexer that provides window management, panes, tabs, and session management
 
-## Usage
+## 🚀 Usage
 
 1. Install the required tools according to their official instructions:
-   - [Wezterm](https://wezterm.org/)
-   - [Zellij](https://zellij.dev/)
-   - [Neovim](https://neovim.io/)
-   - [Starship](https://starship.rs/)
+   - [Wezterm](https://wezterm.org/) 💻
+   - [Zellij](https://zellij.dev/) 📋
+   - [Neovim](https://neovim.io/) 📝
+   - [Starship](https://starship.rs/) 🚀
 
 2. Clone this repository:
    ```bash
    git clone https://github.com/calebikhuohon/dotfiles.git
    ```
 
-3. Copy the configuration to your OS's config dir (e.g `~/.config` on mac/linux).
+3. Copy the configuration to your OS's config dir (e.g `~/.config` on mac/linux). ✅
 
