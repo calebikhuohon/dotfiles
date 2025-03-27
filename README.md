@@ -45,6 +45,8 @@ The Neovim setup is based on [NVChad](https://nvchad.com/) with customizations. 
 - **snacks.lua**: Dashboard, file explorer, and zen mode functionality
 - **surround.lua**: Plugin for easily managing surrounding pairs (brackets, quotes, etc.)
 - **tree-sitter.lua**: Syntax highlighting and code analysis with treesitter
+- **avante.lua** - An AI assistant plugin that integrates with OpenRouter, works like cursor.
+- **mason-lspconfig.lua** - Integration between Mason and LSP config for easy server setup
 
 ## 💻 Terminal Setup
 
