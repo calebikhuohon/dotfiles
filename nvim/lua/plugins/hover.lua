@@ -7,11 +7,11 @@ return {
         require("hover.providers.lsp")
       end,
       preview_opts = {
-        border = 'single'
+        border = 'rounded'
       },
       title = true
     })
-    
+
     -- Keybinding
     vim.keymap.set("n", "K", require("hover").hover, {desc = "Hover documentation"})
   end
