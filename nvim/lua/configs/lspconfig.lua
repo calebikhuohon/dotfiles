@@ -18,31 +18,50 @@ local nvlsp = require "nvchad.configs.lspconfig"
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "pyright",      -- For type checking and advanced features
-    "ruff",   -- For linting/formatting,
-    "bash-language-server",
-    "gitlab-ci-ls", -- yaml,
-    "vuels",
+    "ansiblels",
+    "buf_ls",
+    "copilot-language-server",
+    "cpplint",
+    "cssls",
+    "dart-debug-adapter",
+    "delve",
+    "denols",
+    "docker_compose_language_service",
+    "dockerls",
+    "dotenv-linter",
     "eslint",
-    "harper_ls",
-    "tflint",
-    "sqlls",
-    "solidity-ls",
-    "rust_analyzer",
-    "buf_ls", -- protobuf
-    "nil_ls", -- nix
-    "nginx_language_server",
-    "grammarly-languageserver", -- markdown
-    "ltex", -- latex
-    "spectral-language-server", -- json
-    "jdtls", -- java
-    "htmx-lsp",
-    "graphql-lsp",
+    "gh-actions-language-server",
+    "gitlab_ci_ls",
     "gopls",
-    "docker-compose-langserver",
-    "docker-langserver",
-    "asm-lsp",
-    "ansible-language-server",
+    "hadolint",
+    "harper_ls",
+    "html",
+    "java-debug-adapter",
+    "java-test",
+    "jdtls",
+    "jsonls",
+    "jsonlint",
+    "kotlin-debug-adapter",
+    "kotlin_language_server",
+    "kube-linter",
+    "ltex",
+    "lua_ls",
+    "mypy",
+    "nginx_language_server",
+    "opa",
+    "pyright",
+    "ruff",
+    "rust_analyzer",
+    "solc",
+    "sqlls",
+    "sqls",
+    "stylua",
+    "tailwindcss",
+    "tflint",
+    "vuels",
+    "vimls",
+    "xmlformatter",
+    "yamlls",
   },
   handlers = {
     function (server_name)
@@ -70,6 +89,19 @@ require("lspconfig").ruff.setup({
   end
 })
 
+require('lspconfig').pyright.setup{
+    settings = {
+        python = {
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+            analysis = {
+                executionEnvironments = {
+                    { root = "src" },
+                },
+            },
+        },
+    },
+}
 
 
 

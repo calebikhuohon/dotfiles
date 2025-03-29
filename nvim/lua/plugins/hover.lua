@@ -11,7 +11,7 @@ return {
       },
       title = true
     })
-
+  
     -- Keybinding
     vim.keymap.set("n", "K", require("hover").hover, {desc = "Hover documentation"})
   end

@@ -6,12 +6,17 @@ return {
     -- add any opts here
     -- for example
     provider = "openrouter",
+    cursor_applying_provider = "openrouter",
+    behaviour = {
+        --- ... existing behaviours
+        enable_cursor_planning_mode = true, -- enable cursor planning mode!
+    },
     openai = {
       endpoint = "https://api.openai.com/v1",
       model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
       timeout = 180000, -- Timeout in milliseconds, increase this for reasoning models
       temperature = 0,
-      max_completion_tokens = 16384, -- Increase this to include reasoning tokens (for reasoning models)
+      max_completion_tokens = 1000000, -- Increase this to include reasoning tokens (for reasoning models)
       reasoning_effort = "high", -- low|medium|high, only used for reasoning models
     },
     vendors = {
@@ -20,6 +25,7 @@ return {
       endpoint = 'https://openrouter.ai/api/v1',
       api_key_name = 'OPENROUTER_API_KEY',
       model = 'google/gemini-2.5-pro-exp-03-25:free',
+      max_tokens = "1000000"
       },
     },
   },
