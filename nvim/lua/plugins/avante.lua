@@ -12,11 +12,11 @@ return {
         enable_cursor_planning_mode = true, -- enable cursor planning mode!
     },
     openai = {
-      endpoint = "https://api.openai.com/v1",
-      model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+      endpoint = "https://openrouter.ai/api/v1",
+      model = "google/gemini-2.5-pro-exp-03-25:free", -- your desired model (or use gpt-4o, etc.)
       timeout = 180000, -- Timeout in milliseconds, increase this for reasoning models
       temperature = 0,
-      max_completion_tokens = 1000000, -- Increase this to include reasoning tokens (for reasoning models)
+      max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
       reasoning_effort = "high", -- low|medium|high, only used for reasoning models
     },
     vendors = {
@@ -24,13 +24,13 @@ return {
       __inherited_from = 'openai',
       endpoint = 'https://openrouter.ai/api/v1',
       api_key_name = 'OPENROUTER_API_KEY',
-      model = 'google/gemini-2.5-pro-exp-03-25:free',
-      max_tokens = "1000000"
+      model = 'anthropic/claude-3.7-sonnet:thinking',
+      max_tokens = "8192"
       },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make",
+  build = "make BUILD_FROM_SOURCE=true",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
