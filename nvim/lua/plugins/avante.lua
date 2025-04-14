@@ -28,14 +28,14 @@ return {
       max_tokens = "8192"
       },
     },
-    rag_service = {
-      enabled = true, -- Enables the RAG service
-      host_mount = os.getenv("HOME"), -- Host mount path for the rag service
-      provider = "openrouter", -- The provider to use for RAG service (e.g. openai or ollama)
-      llm_model = "google/gemini-2.5-pro-exp-03-25:free", -- The LLM model to use for RAG service
-      embed_model = "", -- The embedding model to use for RAG service
-      endpoint = "https://openrouter.ai/api/v1", -- The API endpoint for RAG service
-    },
+    -- rag_service = {
+    --   enabled = true, -- Enables the RAG service
+    --   host_mount = os.getenv("HOME"), -- Host mount path for the rag service
+    --   provider = "openrouter", -- The provider to use for RAG service (e.g. openai or ollama)
+    --   llm_model = "google/gemini-2.5-pro-exp-03-25:free", -- The LLM model to use for RAG service
+    --   embed_model = "", -- The embedding model to use for RAG service
+    --   endpoint = "https://openrouter.ai/api/v1", -- The API endpoint for RAG service
+    -- },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make BUILD_FROM_SOURCE=true",
