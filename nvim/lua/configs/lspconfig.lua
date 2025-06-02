@@ -60,7 +60,7 @@ require("mason-lspconfig").setup({
     "tflint",
     "vuels",
     "vimls",
-    "xmlformatter",
+    -- "xmlformatter",
     "yamlls",
   },
   handlers = {

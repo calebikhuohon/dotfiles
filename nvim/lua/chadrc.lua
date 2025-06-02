@@ -21,4 +21,27 @@ M.base46 = {
 --      }
 --}
 
+M.nvimtree = {
+  filters = {
+    dotfiles = false,        -- Show dotfiles like .env, .gitignore
+    git_ignored = false,     -- Show files ignored by git (.gitignore)
+    custom = { "^\\.git$", "DS_Store" }, -- Still hide .git folder and DS_Store
+  },
+  git = {
+    ignore = false,          -- Do not hide git-ignored files
+    enable = true,           -- Show git status in the tree
+  },
+  renderer = {
+    highlight_git = true,    -- Optional: highlight git status
+    icons = {
+      show = {
+        git = true,
+      },
+    },
+  },
+  view = {
+    side = "left",           -- Or "right" if you prefer
+  },
+}
+
 return M
