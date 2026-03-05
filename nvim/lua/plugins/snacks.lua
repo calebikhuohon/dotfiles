@@ -1,55 +1,45 @@
 return {
   "folke/snacks.nvim",
+  lazy = false,
+  priority = 1000,
   keys = {
-    {
-      "<leader>e",
-      function()
-        Snacks.explorer()
-      end,
-      desc = "File Explorer",
-    },
-    {
-      "<leader>se",
-      function()
-        Snacks.picker.explorer()
-      end,
-      desc = "Open Snacks explorer",
-    },
-    {
-      "<leader>sz",
-      function()
-        Snacks.zen()
-      end,
-      desc = "Toggle Snacks zen mode",
-    },
-    {
-      "<leader>p",
-      function()
-        Snacks.picker.git_files()
-      end,
-      desc = "Find git files",
-    },
-    {
-      "<leader>hh",
-      function()
-        Snacks.picker.help()
-      end,
-      desc = "Find Neovim help tags",
-    },
+    { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+    { "<leader>se", function() Snacks.picker.explorer() end, desc = "Snacks Explorer" },
+    { "<leader>sz", function() Snacks.zen() end, desc = "Zen Mode" },
+    { "<leader>p", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
+    { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
+    { "<leader>fg", function() Snacks.picker.live_grep() end, desc = "Live Grep" },
+    { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+    { "<leader>hh", function() Snacks.picker.help() end, desc = "Help Tags" },
+    { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
+    { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
+    { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss Notifications" },
+    { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+    { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference" },
+    { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference" },
   },
   opts = {
-    --- ZEN
-    ---
-    ---
-    ---
-    ---
-    zen = {
+    zen = { enabled = true },
+    notifier = {
       enabled = true,
+      timeout = 3000,
+      style = "compact",
     },
-    --- END ZEN
-
-    --- EXPLORER
-    ---@class snacks.explorer.Config
+    words = { enabled = true },
+    quickfile = { enabled = true },
+    statuscolumn = { enabled = true },
+    input = { enabled = true },
+    scope = { enabled = true },
+    scroll = {
+      enabled = true,
+      animate = {
+        duration = { step = 15, total = 150 },
+      },
+    },
+    indent = {
+      enabled = true,
+      animate = { enabled = false },
+    },
     explorer = {
       enabled = true,
       replace_netrw = true,
@@ -77,40 +67,22 @@ return {
         },
       },
     },
-    ---  END EXPLORER
-
-    --- DASHBOARD
-    ---
-    ---
-    ---
-    ---@class snacks.dashboard.Config
-    ---@field enabled? boolean
-    ---@field sections snacks.dashboard.Section
-    ---@field formats table<string, snacks.dashboard.Text|fun(item:snacks.dashboard.Item, ctx:snacks.dashboard.Format.ctx):snacks.dashboard.Text>
     dashboard = {
       width = 60,
-      row = nil, -- dashboard position. nil for center
-      col = nil, -- dashboard position. nil for center
-      pane_gap = 4, -- empty columns between vertical panes
-      autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
+      row = nil,
+      col = nil,
+      pane_gap = 4,
+      autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
       preset = {
-        ---@type fun(cmd:string, opts:table)|nil
-        pick = nil,
-        ---@type snacks.dashboard.Item[]
         keys = {
-          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-          {
-            icon = " ",
-            key = "c",
-            desc = "Config",
-            action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-          },
-          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
           { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
         header = [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
@@ -120,36 +92,12 @@ return {
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
       },
-      formats = {
-        icon = function(item)
-          if item.file and item.icon == "file" or item.icon == "directory" then
-            return M.icon(item.file, item.icon)
-          end
-          return { item.icon, width = 2, hl = "icon" }
-        end,
-        footer = { "%s", align = "center" },
-        header = { "%s", align = "center" },
-        file = function(item, ctx)
-          local fname = vim.fn.fnamemodify(item.file, ":~")
-          fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
-          if #fname > ctx.width then
-            local dir = vim.fn.fnamemodify(fname, ":h")
-            local file = vim.fn.fnamemodify(fname, ":t")
-            if dir and file then
-              file = file:sub(-(ctx.width - #dir - 2))
-              fname = dir .. "/…" .. file
-            end
-          end
-          local dir, file = fname:match("^(.*)/(.+)$")
-          return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } } or { { fname, hl = "file" } }
-        end,
-      },
       sections = {
         { section = "header" },
         { section = "keys", gap = 1, padding = 1 },
         {
           pane = 2,
-          icon = " ",
+          icon = " ",
           desc = "Browse Repo",
           padding = 1,
           key = "b",
@@ -167,11 +115,11 @@ return {
               action = function()
                 vim.fn.jobstart("gh issue list --web", { detach = true })
               end,
-              icon = " ",
+              icon = " ",
               height = 7,
             },
             {
-              icon = " ",
+              icon = " ",
               title = "Open PRs",
               cmd = "gh pr list -L 3",
               key = "P",
@@ -181,7 +129,7 @@ return {
               height = 7,
             },
             {
-              icon = " ",
+              icon = " ",
               title = "Git Status",
               cmd = "git --no-pager diff --stat -B -M -C",
               height = 10,
